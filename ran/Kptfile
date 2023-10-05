@@ -1,0 +1,26 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata: # kpt-merge: /ran
+  name: ran
+  annotations:
+    internal.kpt.dev/upstream-identifier: 'kpt.dev|Kptfile|default|ran'
+upstream:
+  type: git
+  git:
+    repo: https://github.com/iamvikaskumar/blueprints
+    ref: master
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/iamvikaskumar/blueprints
+    ref: master
+    commit: 09d7b59d84cb045c39adc20d7ec5833f89a99216
+info:
+  emails:
+  - kpt-team@google.com
+  description: This is an example nginx package.
+pipeline:
+  validators:
+  - image: gcr.io/kpt-fn/kubeval:v0.3
+    configMap:
+      strict: "true"
